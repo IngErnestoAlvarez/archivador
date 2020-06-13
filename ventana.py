@@ -4,15 +4,23 @@ from functools import partial
 from tkinter import font
 from funciones import DEST
 from funciones import carpeta
+from datetime import date
 
 NOMBRES_DE_ARCHIVOS = [
     "DDJJ"
 ]
 MESES = [str(x) for x in range(1, 13)]
 
+ANIOS = [str(x) for x in range(date.today().year-5, date.today().year+1)]
+
 def terminar(app):
     app.root.destroy()
 
+
+def mesAnterior(mes):
+    if(mes == 1):
+        return 12
+    return mes-1
 
 def crearStringVar(root, seteado):
     aux = tk.StringVar(root)
@@ -28,7 +36,7 @@ class App(tk.Frame):
         self.root.geometry("300x300")
         self.root["bg"] = "#1DB954"
         self.nombre = crearStringVar(self.root, 'Cliente')
-        self.mes = crearStringVar(self.root, '1')
+        self.mes = crearStringVar(self.root, str(mesAnterior(date.today().month)))
         self.anio = crearStringVar(self.root, '2020')
         self.tipo = crearStringVar(self.root, 'Tipo')
         self.doWindow()
@@ -51,7 +59,7 @@ class App(tk.Frame):
         self.textMes['font'] = fontExample
         self.textMes['bg'] = "#FFFFFF"
 
-        self.textAnio = tk.OptionMenu(self.root,self.anio, '2020')
+        self.textAnio = tk.OptionMenu(self.root,self.anio, *ANIOS)
         self.textAnio.pack(fill=tk.Y,pady=5)
         self.textAnio['font'] = fontExample
         self.textAnio['bg'] = "#FFFFFF"
