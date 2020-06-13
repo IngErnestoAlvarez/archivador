@@ -5,10 +5,10 @@ def main():
 
     app.mainloop()
 
-    print(app.nombre)
-    print(app.mes)
-    print(app.anio)
-    print(app.tipo)
+    print(app.nombre.get())
+    print(app.mes.get())
+    print(app.anio.get())
+    print(app.tipo.get())
 
 if __name__ == "__main__":
     main()

@@ -17,7 +17,7 @@ def main():
         for file in arch:
             app = App(file.stem)
             app.mainloop()
-            cambiarNombre(file,app.nombre,app.tipo,app.mes,app.anio)
+            cambiarNombre(file,app.nombre.get(),app.tipo.get(),app.mes.get(),app.anio.get())
         sleep(5)
 
 if __name__ == "__main__":
