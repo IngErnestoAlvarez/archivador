@@ -5,6 +5,7 @@ from tkinter import font
 from funciones import DEST
 from funciones import carpeta
 from datetime import date
+# pylint: disable=E1120
 
 NOMBRES_DE_ARCHIVOS = [
     "DDJJ"

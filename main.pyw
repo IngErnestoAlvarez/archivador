@@ -8,12 +8,22 @@ import tkinter
 from ventana import App
 
 ORIGEN = r"C:\Users\estud\OneDrive\Documentos\Program\origen"
+
+DETECTORES = [
+    "PDJ"
+]
+
+TIPOS_ARCHIVOS = [
+    "*.txt",
+    "*.pdf"
+]
+
 def main():
     while True:
-        arch = archivos(ORIGEN, "PDJ", "*.txt")
+        arch = archivos(ORIGEN, DETECTORES, TIPOS_ARCHIVOS)
         for file in arch:
             mover(file, DEST)
-        arch = archivos(DEST, "PDJ", "*.txt")
+        arch = archivos(DEST, DETECTORES, TIPOS_ARCHIVOS)
         for file in arch:
             app = App(file.stem)
             app.mainloop()

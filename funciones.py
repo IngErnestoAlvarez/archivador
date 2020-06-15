@@ -36,14 +36,16 @@ def mover(old_file, new_folder):
     if not nombre.exists():
         old_file.replace(nombre)
 
-def archivos(directory, name, pattern):
+def archivos(directory, names, patterns):
     '''directory: str, name:str, patter:str
     directory es el lugar donde se busca los archivos
     name es el string para filtrar los archivos
     pattern es el tipo de archivo que se busca'''
-    filenames = Path(directory).glob(pattern)
     res = []
-    for file in filenames:
-        if name in file.name:
-            res.append(file)
+    for pattern in patterns:
+        filenames = Path(directory).glob(pattern)
+        for name in names:
+            for file in filenames:
+                if name in file.name:
+                    res.append(file)
     return res
