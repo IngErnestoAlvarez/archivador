@@ -28,13 +28,12 @@ def main():
     while True:
         arch = archivos(ORIGEN, DETECTORES, TIPOS_ARCHIVOS)
         for file in arch:
+            app = App(file.stem)
+            app.mainloop()
             mover(file, DEST)
         arch = archivos(DEST, DETECTORES, TIPOS_ARCHIVOS)
         for file in arch:
-            app = App(file.stem)
-            app.mainloop()
-            if app.cerrado:
-                cambiarNombre(file,app.nombre.get(),app.tipo.get(), app.impuesto.get(), app.mes.get(),app.anio.get())
+            cambiarNombre(file,app.nombre.get(),app.tipo.get(), app.impuesto.get(), app.mes.get(),app.anio.get())
         sleep(5)
 
 if __name__ == "__main__":
