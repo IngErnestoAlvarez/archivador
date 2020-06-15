@@ -15,7 +15,8 @@ DETECTORES = [
     "afip",
     "f931",
     "reportes",
-    "certificado"
+    "certificado",
+    "comprobante"
 ]
 
 TIPOS_ARCHIVOS = [
