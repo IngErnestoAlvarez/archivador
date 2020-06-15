@@ -22,11 +22,17 @@ def carpetas(directory, name):
             return child
     return p
 
-def cambiarNombre(fileName, cliente, tipo, mes, anio):
-    nombre = '-'.join([cliente, tipo, mes, anio])
+def cambiarNombre(fileName, cliente, tipo, impuesto, mes, anio):
+    nombre = '-'.join([cliente, tipo, impuesto, mes, anio])
     ext = fileName.suffix
     carpeta = carpetas(fileName.parent, cliente)
-    path = Path(carpeta, nombre + ext)
+    path = Path(carpeta, anio)
+    if not (path.exists()):
+        path.mkdir()
+    path = Path(path, mes)
+    if not (path.exists()):
+        path.mkdir()
+    path = Path(path, nombre + ext)
     if not (path.exists()):
         fileName.rename(path)
 
@@ -44,8 +50,8 @@ def archivos(directory, names, patterns):
     res = []
     for pattern in patterns:
         filenames = Path(directory).glob(pattern)
-        for name in names:
-            for file in filenames:
-                if name in file.name:
+        for file in filenames:
+            for name in names:
+                if name in file.name.lower():
                     res.append(file)
     return res

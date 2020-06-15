@@ -9,6 +9,7 @@ def main():
     print(app.mes.get())
     print(app.anio.get())
     print(app.tipo.get())
+    print(app.impuesto.get())
 
 if __name__ == "__main__":
     main()

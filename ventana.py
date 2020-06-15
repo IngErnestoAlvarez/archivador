@@ -8,13 +8,43 @@ from datetime import date
 # pylint: disable=E1120
 
 NOMBRES_DE_ARCHIVOS = [
-    "DDJJ"
+    "DDJJ",
+    "Ticket",
+    "Certificado"
 ]
-MESES = [str(x) for x in range(1, 13)]
+IMPUESTOS = [
+    "IVA",
+    "IIBB",
+    "CM",
+    "Ganancias",
+    "BP",
+    "Citi Compras y ventas",
+    "931",
+    "Participaciones societarias",
+    "Certif. PyMe",
+    "Exención ganancias"
+    "Otros"
+]
+MESES = [
+    "ENE",
+    "FEB",
+    "MAR",
+    "ABR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AGO",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DIC",
+    "ANUAL"
+]
 
 ANIOS = [str(x) for x in range(date.today().year-5, date.today().year+1)]
 
 def terminar(app):
+    app.cerrado = True
     app.root.destroy()
 
 
@@ -34,12 +64,14 @@ class App(tk.Frame):
         self.root.title(filename)
         self.root.resizable(width=False, height=False)
         super(App, self).__init__(self.root)
-        self.root.geometry("300x300")
+        self.root.geometry("300x350")
         self.root["bg"] = "#1DB954"
         self.nombre = crearStringVar(self.root, 'Cliente')
-        self.mes = crearStringVar(self.root, str(mesAnterior(date.today().month)))
+        self.mes = crearStringVar(self.root, MESES[mesAnterior(date.today().month)-1])
         self.anio = crearStringVar(self.root, '2020')
         self.tipo = crearStringVar(self.root, 'Tipo')
+        self.impuesto = crearStringVar(self.root, 'Impuesto')
+        self.cerrado = False
         self.doWindow()
 
     def doWindow(self):
@@ -54,6 +86,11 @@ class App(tk.Frame):
         self.textTipo.pack(fill=tk.Y,pady=5)
         self.textTipo['font'] = fontExample
         self.textTipo['bg'] = "#FFFFFF"
+
+        self.textImpuesto = tk.OptionMenu(self.root, self.impuesto, *IMPUESTOS)
+        self.textImpuesto.pack(fill=tk.Y,pady=5)
+        self.textImpuesto['font'] = fontExample
+        self.textImpuesto['bg'] = "#FFFFFF"
 
         self.textMes = tk.OptionMenu(self.root, self.mes,*MESES)
         self.textMes.pack(fill=tk.Y,pady=5)

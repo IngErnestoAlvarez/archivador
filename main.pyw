@@ -10,7 +10,12 @@ from ventana import App
 ORIGEN = r"C:\Users\estud\OneDrive\Documentos\Program\origen"
 
 DETECTORES = [
-    "PDJ"
+    "dj",
+    "ticket",
+    "afip",
+    "f931",
+    "reportes",
+    "certificado"
 ]
 
 TIPOS_ARCHIVOS = [
@@ -27,7 +32,8 @@ def main():
         for file in arch:
             app = App(file.stem)
             app.mainloop()
-            cambiarNombre(file,app.nombre.get(),app.tipo.get(),app.mes.get(),app.anio.get())
+            if app.cerrado:
+                cambiarNombre(file,app.nombre.get(),app.tipo.get(), app.impuesto.get(), app.mes.get(),app.anio.get())
         sleep(5)
 
 if __name__ == "__main__":
