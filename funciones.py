@@ -1,7 +1,7 @@
 from os import rename
 from os import path
 from pathlib import Path
-
+from shutil import move
 DEST = r"C:\Users\estud\OneDrive\Documentos\Program\destino"
 
 def carpeta(directory):
@@ -40,7 +40,7 @@ def cambiarNombre(fileName, cliente, tipo, impuesto, mes, anio):
 def mover(old_file, new_folder):
     nombre = Path(new_folder, old_file.name)
     if not nombre.exists():
-        old_file.replace(nombre)
+        move(old_file, nombre)
 
 def archivos(directory, names, patterns):
     '''directory: str, name:str, patter:str
