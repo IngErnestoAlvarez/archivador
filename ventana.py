@@ -22,7 +22,7 @@ IMPUESTOS = [
     "931",
     "Participaciones societarias",
     "Certif. PyMe",
-    "Exención ganancias"
+    "Extención ganancias",
     "Otros"
 ]
 MESES = [
@@ -44,7 +44,8 @@ MESES = [
 ANIOS = [str(x) for x in range(date.today().year-5, date.today().year+1)]
 
 def terminar(app):
-    app.cerrado = True
+    if app.nombre.get() != 'Cliente':
+        app.cerrado = True
     app.root.destroy()
 
 

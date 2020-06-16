@@ -25,7 +25,7 @@ def carpetas(directory, name):
 def cambiarNombre(fileName, cliente, tipo, impuesto, mes, anio):
     nombre = '-'.join([cliente, tipo, impuesto, mes, anio])
     ext = fileName.suffix
-    carpeta = carpetas(fileName.parent, cliente)
+    carpeta = carpetas(DEST, cliente)
     path = Path(carpeta, anio)
     if not (path.exists()):
         path.mkdir()
@@ -34,13 +34,21 @@ def cambiarNombre(fileName, cliente, tipo, impuesto, mes, anio):
         path.mkdir()
     path = Path(path, nombre + ext)
     if not (path.exists()):
-        fileName.rename(path)
+        move(fileName, path)
 
 
 def mover(old_file, new_folder):
     nombre = Path(new_folder, old_file.name)
     if not nombre.exists():
         move(old_file, nombre)
+
+def moverABasura(old_file, origen):
+    destino = Path(origen, 'omitidos')
+    if destino.exists():
+        mover(old_file, destino)
+    else:
+       destino.mkdir()
+       mover(old_file, destino) 
 
 def archivos(directory, names, patterns):
     '''directory: str, name:str, patter:str
