@@ -2,7 +2,8 @@ from os import rename
 from os import path
 from pathlib import Path
 from shutil import move
-DEST = r"C:\Users\estud\OneDrive\Documentos\Program\destino"
+with open("direcciones\DEST.txt", 'r') as f:
+    DEST = f.readline()
 
 def carpeta(directory):
     p = Path(directory)

@@ -2,3 +2,5 @@ __pycache__
 .vscode
 destino
 origen
+direcciones/DEST.txt
+direcciones/ORIGEN.txt

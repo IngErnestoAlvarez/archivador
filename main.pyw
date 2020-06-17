@@ -7,7 +7,13 @@ from time import sleep
 import tkinter
 from ventana import App
 
-ORIGEN = r"C:\Users\estud\OneDrive\Documentos\Program\origen"
+'''TODO:
+- "Actualizador" Para las maquinas
+- Nuevo filtro por Tipo de cliente
+'''
+
+with open(r"direcciones\ORIGEN.txt", 'r') as f:
+    ORIGEN = f.readline()
 
 DETECTORES = [
     "dj",
