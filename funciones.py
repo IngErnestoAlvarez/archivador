@@ -5,8 +5,27 @@ from shutil import move
 with open("direcciones\DEST.txt", 'r') as f:
     DEST = f.readline()
 
-def carpeta(directory):
+def clientesIn(directory, name):
+    if not isinstance(name, str):
+        name = name.get()
     p = Path(directory)
+    res = []
+    if name == 'Regimen':
+        for child in p.iterdir():
+            if child.is_dir():
+                res = res + carpeta(child)
+    else:
+        for child in (Path(directory, name)).iterdir():
+            if child.is_dir():
+                res.append(child.name)
+    return res
+
+
+def carpeta(directory):
+    if not isinstance(directory, Path):
+        p = Path(directory)
+    else:
+        p = directory
     res = []
     for child in p.iterdir():
         if child.is_dir():
@@ -23,11 +42,12 @@ def carpetas(directory, name):
             return child
     return p
 
-def cambiarNombre(fileName, cliente, tipo, impuesto, mes, anio):
+def cambiarNombre(fileName,regimen,cliente, tipo, impuesto, mes, anio):
     nombre = '-'.join([cliente, tipo, impuesto, mes, anio])
     ext = fileName.suffix
-    carpeta = carpetas(DEST, cliente)
-    path = Path(carpeta, anio)
+    carpeta = carpetas(DEST, regimen)
+    path = Path(carpeta, cliente)
+    path = Path(path, anio)
     if not (path.exists()):
         path.mkdir()
     path = Path(path, mes)

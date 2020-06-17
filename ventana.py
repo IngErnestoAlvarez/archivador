@@ -4,6 +4,7 @@ from functools import partial
 from tkinter import font
 from funciones import DEST
 from funciones import carpeta
+from funciones import clientesIn
 from datetime import date
 # pylint: disable=E1120
 
@@ -65,50 +66,59 @@ class App(tk.Frame):
         self.root.title(filename)
         self.root.resizable(width=False, height=False)
         super(App, self).__init__(self.root)
-        self.root.geometry("300x350")
+        self.root.geometry("300x400")
         self.root["bg"] = "#1DB954"
-        self.nombre = crearStringVar(self.root, 'Cliente')
+        self.nombre = crearStringVar(self.root, 'Regimen')
         self.mes = crearStringVar(self.root, MESES[mesAnterior(date.today().month)-1])
         self.anio = crearStringVar(self.root, '2020')
         self.tipo = crearStringVar(self.root, 'Tipo')
         self.impuesto = crearStringVar(self.root, 'Impuesto')
+        self.cliente = crearStringVar(self.root, 'Cliente')
         self.cerrado = False
         self.doWindow()
 
-    def doWindow(self):
+    def makeStyle(self, objeto):
         fontExample = font.Font(root=self.root,family="Bahnschrift SemiBold", size=12)
+        objeto.pack(fill=tk.Y,pady=5)
+        objeto['font'] = fontExample
+        objeto['bg'] = "#FFFFFF"
 
-        self.menu = tk.OptionMenu(self.root, self.nombre, *(carpeta(DEST)))
-        self.menu.pack(fill=tk.Y,pady=5)
-        self.menu['font'] = fontExample
-        self.menu['bg'] = "#FFFFFF"
+    def makeStyleButton(self, button):
+        fontExample = font.Font(root=self.root,family="Bahnschrift SemiBold", size=12)
+        button.pack(fill=tk.Y,pady=35)
+        button['bg'] = "#E1E8ED"
+        button['font'] = fontExample
+
+    def doWindow(self):
+
+        self.listaActual = clientesIn(DEST, self.nombre)
+
+        self.menu = tk.OptionMenu(self.root, self.nombre, *(carpeta(DEST)), command=self.modificarLista)
+        self.makeStyle(self.menu)
+
+        self.lista = tk.OptionMenu(self.root, self.cliente, *(self.listaActual))
+        self.makeStyle(self.lista)
 
         self.textTipo = tk.OptionMenu(self.root, self.tipo, *NOMBRES_DE_ARCHIVOS)
-        self.textTipo.pack(fill=tk.Y,pady=5)
-        self.textTipo['font'] = fontExample
-        self.textTipo['bg'] = "#FFFFFF"
+        self.makeStyle(self.textTipo)
 
         self.textImpuesto = tk.OptionMenu(self.root, self.impuesto, *IMPUESTOS)
-        self.textImpuesto.pack(fill=tk.Y,pady=5)
-        self.textImpuesto['font'] = fontExample
-        self.textImpuesto['bg'] = "#FFFFFF"
+        self.makeStyle(self.textImpuesto)
 
         self.textMes = tk.OptionMenu(self.root, self.mes,*MESES)
-        self.textMes.pack(fill=tk.Y,pady=5)
-        self.textMes['font'] = fontExample
-        self.textMes['bg'] = "#FFFFFF"
+        self.makeStyle(self.textMes)
 
         self.textAnio = tk.OptionMenu(self.root,self.anio, *ANIOS)
-        self.textAnio.pack(fill=tk.Y,pady=5)
-        self.textAnio['font'] = fontExample
-        self.textAnio['bg'] = "#FFFFFF"
-
+        self.makeStyle(self.textAnio)
 
         self.button = tk.Button(self.root, text="Terminar",command= lambda: terminar(self))
-        self.button.pack(fill=tk.Y,pady=35)
-        self.button['bg'] = "#E1E8ED"
-        self.button['font'] = fontExample
+        self.makeStyleButton(self.button)
 
+    def modificarLista(self, nombre):
+        self.listaActual = clientesIn(DEST, nombre)
+        self.lista['menu'].delete(0, 'end')
+        for item in self.listaActual:
+            self.lista['menu'].add_command(label=item, command=tk._setit(self.cliente, item))
 
 
 

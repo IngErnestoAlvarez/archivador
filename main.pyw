@@ -8,7 +8,6 @@ import tkinter
 from ventana import App
 
 '''TODO:
-- "Actualizador" Para las maquinas
 - Nuevo filtro por Tipo de cliente
 '''
 
@@ -37,7 +36,7 @@ def main():
             app = App(file.stem)
             app.mainloop()
             if app.cerrado:
-                cambiarNombre(file,app.nombre.get(),app.tipo.get(), app.impuesto.get(), app.mes.get(),app.anio.get())
+                cambiarNombre(file,app.nombre.get(),app.cliente.get(),app.tipo.get(), app.impuesto.get(), app.mes.get(),app.anio.get())
             else:
                 moverABasura(file, ORIGEN)
         sleep(5)
