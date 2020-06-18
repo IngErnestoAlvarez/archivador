@@ -58,6 +58,22 @@ def cambiarNombre(fileName,regimen,cliente, tipo, impuesto, mes, anio):
     path = Path(path, nombre + ext)
     if not (path.exists()):
         move(fileName, path)
+    else:
+        parent = path.parent
+        path = noRepetido(parent, nombre, ext)
+        move(fileName, path)
+
+def noRepetido(parent, nombre, ext):
+    nombreAux = nombre
+    contador = 2
+    pathAux = Path(parent, nombreAux + ext)
+    while True:
+        if pathAux.exists():
+            nombreAux = nombre + "({})".format(contador)
+            pathAux = Path(parent, nombreAux + ext)
+            contador += 1
+        else:
+            return pathAux
 
 
 def mover(old_file, new_folder):
