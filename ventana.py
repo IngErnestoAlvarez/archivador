@@ -11,7 +11,10 @@ from datetime import date
 NOMBRES_DE_ARCHIVOS = [
     "DDJJ",
     "Ticket",
-    "Certificado"
+    "Certificado",
+    "Pago",
+    "Compensación",
+    "Plan de pago"
 ]
 IMPUESTOS = [
     "IVA",
@@ -24,7 +27,10 @@ IMPUESTOS = [
     "Participaciones societarias",
     "Certif. PyMe",
     "Extención ganancias",
-    "Otros"
+    "Mis facilidades",
+    "Moratoria",
+    "Policia laboral",
+    "Sindical"
 ]
 MESES = [
     "ENE",

@@ -5,9 +5,11 @@ from shutil import move
 with open("direcciones\DEST.txt", 'r') as f:
     DEST = f.readline()
 
-def clientesIn(directory, name):
-    if not isinstance(name, str):
-        name = name.get()
+def clientesIn(directory, aname):
+    if not isinstance(aname, str):
+        name = aname.get()
+    else:
+        name = aname
     p = Path(directory)
     res = []
     if name == 'Regimen':

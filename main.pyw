@@ -8,7 +8,9 @@ import tkinter
 from ventana import App
 
 '''TODO:
-- Nuevo filtro por Tipo de cliente
+- Nombre repetido
+- Todas las listas por orden alfabetico
+- 
 '''
 
 with open(r"direcciones\ORIGEN.txt", 'r') as f:
