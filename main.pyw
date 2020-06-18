@@ -8,7 +8,6 @@ import tkinter
 from ventana import App
 
 '''TODO:
-- Todas las listas por orden alfabetico
 '''
 
 with open(r"direcciones\ORIGEN.txt", 'r') as f:

@@ -16,6 +16,7 @@ NOMBRES_DE_ARCHIVOS = [
     "Compensación",
     "Plan de pago"
 ]
+NOMBRES_DE_ARCHIVOS.sort()
 IMPUESTOS = [
     "IVA",
     "IIBB",
@@ -32,6 +33,7 @@ IMPUESTOS = [
     "Policia laboral",
     "Sindical"
 ]
+IMPUESTOS.sort()
 MESES = [
     "ENE",
     "FEB",
@@ -98,6 +100,7 @@ class App(tk.Frame):
     def doWindow(self):
 
         self.listaActual = clientesIn(DEST, self.nombre)
+        self.listaActual.sort()
 
         self.menu = tk.OptionMenu(self.root, self.nombre, *(carpeta(DEST)), command=self.modificarLista)
         self.makeStyle(self.menu)
@@ -122,6 +125,7 @@ class App(tk.Frame):
 
     def modificarLista(self, nombre):
         self.listaActual = clientesIn(DEST, nombre)
+        self.listaActual.sort()
         self.lista['menu'].delete(0, 'end')
         for item in self.listaActual:
             self.lista['menu'].add_command(label=item, command=tk._setit(self.cliente, item))
