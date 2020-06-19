@@ -2,14 +2,13 @@ from os import rename
 from os import path
 from pathlib import Path
 from shutil import move
+from makes import *
 with open("direcciones\DEST.txt", 'r') as f:
     DEST = f.readline()
 
+
 def clientesIn(directory, aname):
-    if not isinstance(aname, str):
-        name = aname.get()
-    else:
-        name = aname
+    name = makeToString(aname)
     p = Path(directory)
     res = []
     if name == 'Regimen':
@@ -24,10 +23,7 @@ def clientesIn(directory, aname):
 
 
 def carpeta(directory):
-    if not isinstance(directory, Path):
-        p = Path(directory)
-    else:
-        p = directory
+    p = makeToPath(directory)
     res = []
     for child in p.iterdir():
         if child.is_dir():
@@ -35,10 +31,7 @@ def carpeta(directory):
     return res
 
 def carpetas(directory, name):
-    if not isinstance(directory, Path):
-        p = Path(directory)
-    else:
-        p = directory
+    p = makeToPath(directory)
     for child in p.iterdir():
         if child.is_dir() and name in child.name:
             return child
