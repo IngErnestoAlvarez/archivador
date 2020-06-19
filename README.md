@@ -48,7 +48,22 @@ DETECTORES = [
 ]
   ```
 
-  En este caso para agregar un elemento, simplemente tienes que agregar una coma al final del último elemento y agregar un elemento en la linea siguiente (**Atención**: Las comillas al inicio de cada linea tienen que estar alineadas).
+  En este caso para agregar un elemento, simplemente tienes que agregar una coma al final del último elemento y agregar un elemento en la linea siguiente:
+  
+  ```python
+DETECTORES = [
+    "dj",
+    "ticket",
+    "afip",
+    "f931",
+    "reportes",
+    "certificado",
+    "comprobante",
+    "nuevo elemento"
+]
+  ```
+
+  (**Atención**: Las comillas al inicio de cada linea tienen que estar alineadas).
 
   ```python
 DETECTORES = [
