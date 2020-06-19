@@ -44,11 +44,23 @@ def carpetas(directory, name):
             return child
     return p
 
+def carpetaInterna(DEST, cliente):
+    p = Path(DEST)
+    for carpeta in p.iterdir():
+        if carpeta.is_dir():
+            for carp in carpeta.iterdir():
+                if cliente in carp.name:
+                    p = Path(carpeta, cliente)
+                    return p
+
 def cambiarNombre(fileName,regimen,cliente, tipo, impuesto, mes, anio):
     nombre = '-'.join([cliente, tipo, impuesto, mes, anio])
     ext = fileName.suffix
-    carpeta = carpetas(DEST, regimen)
-    path = Path(carpeta, cliente)
+    if regimen != 'Regimen':
+        carpeta = carpetas(DEST, regimen)
+        path = Path(carpeta, cliente)
+    else:
+        path = carpetaInterna(DEST, cliente)
     path = Path(path, anio)
     if not (path.exists()):
         path.mkdir()
