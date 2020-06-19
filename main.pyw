@@ -8,6 +8,7 @@ import tkinter
 from ventana import App
 
 '''TODO:
+ -Elegir cliente sin regimen...(No detecta carpeta regimen)
 '''
 
 with open(r"direcciones\ORIGEN.txt", 'r') as f:

@@ -53,7 +53,7 @@ MESES = [
 ANIOS = [str(x) for x in range(date.today().year-5, date.today().year+1)]
 
 def terminar(app):
-    if app.nombre.get() != 'Cliente':
+    if app.cliente.get() != 'Cliente':
         app.cerrado = True
     app.root.destroy()
 
