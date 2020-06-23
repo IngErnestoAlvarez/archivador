@@ -10,7 +10,7 @@ from ventana import App
 '''TODO:
 '''
 
-with open(r"direcciones\ORIGEN.txt", 'r') as f:
+with open(r"direcciones\ORIGEN.txt", 'r', encoding='utf-8') as f:
     ORIGEN = f.readline()
 
 DETECTORES = [
