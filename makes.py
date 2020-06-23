@@ -10,3 +10,4 @@ def makeToPath(var):
         p = Path(var)
     else:
         p = var
+    return p
