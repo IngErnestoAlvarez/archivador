@@ -25,7 +25,8 @@ DETECTORES = [
 ]
 
 TIPOS_ARCHIVOS = [
-    "*.*"
+    "*.*",
+    "*."
 ]
 
 def main():
