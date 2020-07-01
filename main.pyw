@@ -20,7 +20,8 @@ DETECTORES = [
     "f931",
     "reportes",
     "certificado",
-    "comprobante"
+    "comprobante",
+    "credencial"
 ]
 
 TIPOS_ARCHIVOS = [
