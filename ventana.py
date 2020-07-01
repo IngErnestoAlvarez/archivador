@@ -16,7 +16,8 @@ NOMBRES_DE_ARCHIVOS = [
     "Compensación",
     "Plan de pago",
     "Papel de Trabajo",
-    "Anticipo"
+    "Anticipo",
+    "Credencial"
 ]
 NOMBRES_DE_ARCHIVOS.sort()
 IMPUESTOS = [
@@ -33,7 +34,8 @@ IMPUESTOS = [
     "Mis facilidades",
     "Moratoria",
     "Policia laboral",
-    "Sindical"
+    "Sindical",
+    "Monotributo"
 ]
 IMPUESTOS.sort()
 MESES = [
