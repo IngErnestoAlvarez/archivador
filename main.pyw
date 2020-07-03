@@ -23,7 +23,8 @@ DETECTORES = [
     "comprobante",
     "credencial",
     "iva",
-    "acuse"
+    "acuse",
+    "formulario"
 ]
 
 TIPOS_ARCHIVOS = [
