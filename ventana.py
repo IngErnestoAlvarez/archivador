@@ -11,6 +11,7 @@ from datetime import date
 NOMBRES_DE_ARCHIVOS = [
     "DDJJ",
     "Ticket",
+    "Ticket Libro",
     "Certificado",
     "Pago",
     "Compensación",
