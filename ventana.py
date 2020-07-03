@@ -17,9 +17,7 @@ NOMBRES_DE_ARCHIVOS = [
     "Plan de pago",
     "Papel de Trabajo",
     "Anticipo",
-    "Credencial",
-    "Iva",
-    "acuse"
+    "Credencial"
 ]
 NOMBRES_DE_ARCHIVOS.sort()
 IMPUESTOS = [
