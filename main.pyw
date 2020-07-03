@@ -21,7 +21,9 @@ DETECTORES = [
     "reportes",
     "certificado",
     "comprobante",
-    "credencial"
+    "credencial",
+    "iva",
+    "acuse"
 ]
 
 TIPOS_ARCHIVOS = [
