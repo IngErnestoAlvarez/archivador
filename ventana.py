@@ -38,7 +38,8 @@ IMPUESTOS = [
     "Policia laboral",
     "Sindical",
     "Monotributo",
-    "Sueldos"
+    "Sueldos",
+    "Presentación Balance"
 ]
 IMPUESTOS.sort()
 MESES = [
