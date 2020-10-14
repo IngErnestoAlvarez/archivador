@@ -58,7 +58,7 @@ MESES = [
     "ANUAL"
 ]
 
-ANIOS = [str(x) for x in range(date.today().year-5, date.today().year+1)]
+ANIOS = [str(x) for x in range(date.today().year-10, date.today().year+10)]
 
 def terminar(app):
     if app.cliente.get() != 'Cliente':
