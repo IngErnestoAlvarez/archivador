@@ -32,7 +32,7 @@ IMPUESTOS = [
     "931",
     "Participaciones societarias",
     "Certif. PyMe",
-    "Extención ganancias",
+    "Exención ganancias",
     "Mis facilidades",
     "Moratoria",
     "Policia laboral",
